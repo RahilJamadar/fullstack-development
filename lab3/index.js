@@ -8,17 +8,17 @@ const rl = readline.createInterface({
     output: process.stdout
 });
 
-event.on('remind', (task) => {
-    console.log(`Reminder: ${task}`);
+event.on('remind', (task, time) => {
+    setTimeout(() => {
+        console.log(`Reminder: ${task}`);
+    }, time * 1000);
 });
 
 const reminder = () => {
     rl.question('Enter the task:', (task) => {
         rl.question("Enter the time to remind (in seconds):", (time) => {
-            console.log(`Reminder set for ${task} in ${time} seconds.`);
-            setTimeout(() => {
-                event.emit('remind', task);
-            }, time * 1000);
+            console.log(`Reminder set for ${task} in ${Number.parseInt(time)} seconds.`);
+            event.emit('remind', task, Number.parseInt(time));
         })
     })
 }
