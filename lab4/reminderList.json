@@ -1,0 +1,14 @@
+[
+  {
+    "task": "power",
+    "time": 2000
+  },
+  {
+    "task": "cook",
+    "time": 2000
+  },
+  {
+    "task": "judge",
+    "time": 3000
+  }
+]
