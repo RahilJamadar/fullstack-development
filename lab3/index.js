@@ -19,7 +19,8 @@ const reminder = () => {
         rl.question("Enter the time to remind (in seconds):", (time) => {
             console.log(`Reminder set for ${task} in ${Number.parseInt(time)} seconds.`);
             event.emit('remind', task, Number.parseInt(time));
-        })
+            rl.close();
+        });
     })
 }
 

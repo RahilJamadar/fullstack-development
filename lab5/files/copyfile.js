@@ -1,7 +1,7 @@
 const fs = require('fs');
 
 const streamin = fs.createReadStream('log.txt', 'utf8');
-const streamout = fs.createWriteStream('copylog.txt', 'utf8');
+const streamout = fs.createWriteStream('copylog1.txt', 'utf8');
 streamin.pipe(streamout);
 
 const stat = fs.statSync('log.txt');

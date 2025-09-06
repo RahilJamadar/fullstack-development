@@ -9,32 +9,26 @@ const mainMenu = () => {
     console.log("\n1. Create reminder");
     console.log("2. Remind me");
     console.log("3. Exit");
-    rl.question("Choose an option: ", (option) => {
-        switch (option) {
-            case '1':
-                rl.question("Enter the task to remind: ", (task) => {
-                    rl.question("Enter the time to remind (in seconds): ", (time) => {
-                        reminder.create(task, Number.parseInt(time));
-                        mainMenu();
-                    });
-                });
-                break;
-            case '2':
-                console.log("Reminding you...");
-                reminder.remind();
-                rl.close();
-                break;
-            case '3':
-                console.log("Exiting...");
-                rl.close();
-                return;
 
-            default:
-                console.log("Invalid option, please try again.");
-                mainMenu();
+    rl.question("Choose an option: ", (option) => {
+        if (option === '1') {
+            rl.question("Enter the task: ", (task) => {
+                rl.question("Enter time in seconds: ", (time) => {
+                    reminder.create(task, parseInt(time));
+                    mainMenu();
+                });
+            });
+        } else if (option === '2') {
+            console.log("Reminding you...");
+            reminder.remind(() => rl.close());
+        } else if (option === '3') {
+            console.log("Exiting...");
+            rl.close();
+        } else {
+            console.log("Invalid option. Try again.");
+            mainMenu();
         }
     });
 };
 
 mainMenu();
-
