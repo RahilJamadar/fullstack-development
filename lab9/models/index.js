@@ -3,6 +3,10 @@ const Student = require('./student');
 const Subject = require('./subject');
 const Associate = require('./associateModel');
 
+
+Student.hasMany(Subject);
+Subject.belongsTo(Student);
+
 (async () => {
     try {
         await dbconnect.authenticate();
